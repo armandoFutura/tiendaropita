@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdminDashboard from '../../components/AdminDashboard';
+---
+
+<BaseLayout title="Panel Administrativo">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-bold mb-8">Panel Administrativo</h1>
+    <AdminDashboard client:load />
+  </div>
+</BaseLayout>

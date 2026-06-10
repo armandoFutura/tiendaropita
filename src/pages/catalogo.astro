@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProductosByCategoria, categorias } from '../lib/productos-data';
+import ProductGrid from '../components/ProductGrid';
+
+const categoria = Astro.url.searchParams.get('categoria') || 'todas';
+const productos = getProductosByCategoria(categoria);
+const catLabel = categorias.find(c => c.id === categoria)?.label || 'Todas';
+---
+
+<BaseLayout title={`Catálogo - ${catLabel}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-bold mb-2">Catálogo</h1>
+    <p class="text-secondary-500 mb-8">
+      {productos.length} producto{productos.length !== 1 ? 's' : ''} encontrado{productos.length !== 1 ? 's' : ''}
+    </p>
+    <ProductGrid productos={productos} categoria={categoria} categorias={categorias} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProductoById, productos } from '../../lib/productos-data';
+import ProductDetailClient from '../../components/ProductDetailClient';
+import type { Producto } from '../../lib/types';
+
+export function getStaticPaths() {
+  return productos.map((p: Producto) => ({
+    params: { id: String(p.id) },
+    props: { producto: p },
+  }));
+}
+
+const { producto } = Astro.props;
+const relacionados = productos.filter(p => p.categoria === producto.categoria && p.id !== producto.id).slice(0, 4);
+---
+
+<BaseLayout title={producto.nombre} description={producto.descripcion}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <a href="/catalogo" class="inline-flex items-center gap-1 text-secondary-500 hover:text-primary-600 mb-6 text-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Volver al catálogo
+    </a>
+    <ProductDetailClient producto={producto} client:load />
+    
+    {relacionados.length > 0 && (
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold mb-6">También te puede gustar</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {relacionados.map((p: Producto) => (
+            <a key={p.id} href={`/producto/${p.id}`} class="card group">
+              <div class="aspect-[4/5] overflow-hidden bg-secondary-50">
+                <img src={p.imagenes[0]} alt={p.nombre} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              <div class="p-3">
+                <h3 class="font-semibold text-sm">{p.nombre}</h3>
+                <p class="text-sm font-bold text-primary-600 mt-1">${p.precio_minorista.toLocaleString('es-CL')}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</BaseLayout>

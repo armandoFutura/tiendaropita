@@ -1,0 +1,150 @@
+import type { Producto } from './types';
+
+export const productos: Producto[] = [
+  {
+    id: 1,
+    nombre: 'Polera Algodón Premium',
+    descripcion: 'Polera de algodón peinado 100% premium. Ideal para el día a día, súper suave al tacto y resistente a múltiples lavados. Corte moderno y cómodo.',
+    precio_minorista: 8900,
+    precio_mayorista: 6500,
+    imagenes: [
+      'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80',
+      'https://images.unsplash.com/photo-1622260614153-03223fb72052?w=600&q=80',
+    ],
+    tallas: ['XS', 'S', 'M', 'L', 'XL'],
+    colores: ['Blanco', 'Negro', 'Gris', 'Azul Marino'],
+    categoria: 'poleras',
+    activo: true,
+    created_at: '2025-01-01',
+  },
+  {
+    id: 2,
+    nombre: 'Polera Manga Larga',
+    descripcion: 'Polera manga larga en algodón suave. Perfecta para los días más frescos. Costuras reforzadas y cuello ribeteado.',
+    precio_minorista: 10900,
+    precio_mayorista: 7900,
+    imagenes: [
+      'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80',
+      'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80',
+    ],
+    tallas: ['XS', 'S', 'M', 'L', 'XL'],
+    colores: ['Blanco', 'Negro', 'Gris Oxford', 'Verde Oliva'],
+    categoria: 'poleras',
+    activo: true,
+    created_at: '2025-01-01',
+  },
+  {
+    id: 3,
+    nombre: 'Pantalón Jogger',
+    descripcion: 'Pantalón jogger en algodón con elastano. Cintura elástica con cordón ajustable. Bolsillos laterales. Cómodo y moderno.',
+    precio_minorista: 15900,
+    precio_mayorista: 11900,
+    imagenes: [
+      'https://images.unsplash.com/photo-1596993100471-7c8f9a4c5b5c?w=600&q=80',
+      'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80',
+    ],
+    tallas: ['XS', 'S', 'M', 'L', 'XL'],
+    colores: ['Negro', 'Gris', 'Azul Marino', 'Caqui'],
+    categoria: 'pantalones',
+    activo: true,
+    created_at: '2025-01-01',
+  },
+  {
+    id: 4,
+    nombre: 'Short Deportivo',
+    descripcion: 'Short deportivo de algodón con licra. Fresco y transpirable. Ideal para jugar y hacer deporte.',
+    precio_minorista: 9900,
+    precio_mayorista: 7200,
+    imagenes: [
+      'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&q=80',
+      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=80',
+    ],
+    tallas: ['XS', 'S', 'M', 'L', 'XL'],
+    colores: ['Negro', 'Gris', 'Azul Marino', 'Rojo'],
+    categoria: 'pantalones',
+    activo: true,
+    created_at: '2025-01-01',
+  },
+  {
+    id: 5,
+    nombre: 'Polerón Hoodie',
+    descripcion: 'Polerón con capucha forrado en algodón felpa. Bolsillo canguro frontal. Capucha ajustable con cordones. Muy abrigador.',
+    precio_minorista: 18900,
+    precio_mayorista: 13900,
+    imagenes: [
+      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80',
+      'https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=600&q=80',
+    ],
+    tallas: ['XS', 'S', 'M', 'L', 'XL'],
+    colores: ['Negro', 'Gris', 'Azul Marino', 'Burdeo'],
+    categoria: 'polerones',
+    activo: true,
+    created_at: '2025-01-01',
+  },
+  {
+    id: 6,
+    nombre: 'Polerón Canguro',
+    descripcion: 'Polerón canguro sin capucha, corte clásico. Algodón felpa de alta gramaje. Ideal para uso diario.',
+    precio_minorista: 16900,
+    precio_mayorista: 12500,
+    imagenes: [
+      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80',
+      'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80',
+    ],
+    tallas: ['XS', 'S', 'M', 'L', 'XL'],
+    colores: ['Gris', 'Negro', 'Verde Bosque', 'Terracota'],
+    categoria: 'polerones',
+    activo: true,
+    created_at: '2025-01-01',
+  },
+  {
+    id: 7,
+    nombre: 'Vestido Verano',
+    descripcion: 'Vestido de algodón para niña. Fresco, cómodo y con vuelo. Perfecto para el verano y ocasiones especiales.',
+    precio_minorista: 12900,
+    precio_mayorista: 9500,
+    imagenes: [
+      'https://images.unsplash.com/photo-1623939804672-72b440a4a5d6?w=600&q=80',
+      'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80',
+    ],
+    tallas: ['XS', 'S', 'M', 'L', 'XL'],
+    colores: ['Blanco', 'Rosado', 'Celeste', 'Lavanda'],
+    categoria: 'vestidos',
+    activo: true,
+    created_at: '2025-01-01',
+  },
+  {
+    id: 8,
+    nombre: 'Parka Invierno',
+    descripcion: 'Parka acolchada con capucha desmontable. Impermeable y muy abrigadora. Cierre con cremallera y botones a presión.',
+    precio_minorista: 24900,
+    precio_mayorista: 18900,
+    imagenes: [
+      'https://images.unsplash.com/photo-1544923246-77307dd270b1?w=600&q=80',
+      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80',
+    ],
+    tallas: ['XS', 'S', 'M', 'L', 'XL'],
+    colores: ['Negro', 'Azul Marino', 'Rojo', 'Verde'],
+    categoria: 'abrigos',
+    activo: true,
+    created_at: '2025-01-01',
+  },
+];
+
+export const categorias = [
+  { id: 'todas', label: 'Todas' },
+  { id: 'poleras', label: 'Poleras' },
+  { id: 'polerones', label: 'Polerones' },
+  { id: 'pantalones', label: 'Pantalones' },
+  { id: 'vestidos', label: 'Vestidos' },
+  { id: 'abrigos', label: 'Abrigos' },
+];
+
+export function getProductoById(id: number): Producto | undefined {
+  return productos.find((p) => p.id === id);
+}
+
+export function getProductosByCategoria(categoria: string): Producto[] {
+  if (categoria === 'todas') return productos;
+  return productos.filter((p) => p.categoria === categoria);
+}
