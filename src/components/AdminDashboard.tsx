@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { productos as initialProductos, categorias } from '../lib/productos-data';
-import type { Producto } from '../lib/types';
-import { formatPrecio } from '../lib/utils';
+import type { Producto, TipoTalla } from '../lib/types';
+import { formatPrecio, getTipoTallaLabel } from '../lib/utils';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<'productos' | 'ordenes' | 'stock'>('productos');
@@ -89,7 +89,7 @@ export default function AdminDashboard() {
                     <td className="py-3 text-secondary-500 capitalize">{prod.categoria}</td>
                     <td className="py-3">{formatPrecio(prod.precio_minorista)}</td>
                     <td className="py-3">{formatPrecio(prod.precio_mayorista)}</td>
-                    <td className="py-3">{prod.tallas.join(', ')}</td>
+                    <td className="py-3">{prod.tallas.join(', ')} <span className="text-xs text-secondary-400">({getTipoTallaLabel(prod.tipoTalla)})</span></td>
                     <td className="py-3">{prod.colores.join(', ')}</td>
                     <td className="py-3">
                       <button
@@ -187,6 +187,7 @@ function ProductForm({
     precio_minorista: producto?.precio_minorista || 0,
     precio_mayorista: producto?.precio_mayorista || 0,
     categoria: producto?.categoria || 'poleras',
+    tipoTalla: producto?.tipoTalla || 'letras',
     tallas: producto?.tallas.join(', ') || '',
     colores: producto?.colores.join(', ') || '',
     imagenes: producto?.imagenes.join('\n') || '',
@@ -201,6 +202,7 @@ function ProductForm({
       precio_minorista: form.precio_minorista,
       precio_mayorista: form.precio_mayorista,
       categoria: form.categoria,
+      tipoTalla: form.tipoTalla as TipoTalla,
       tallas: form.tallas.split(',').map(s => s.trim()).filter(Boolean),
       colores: form.colores.split(',').map(s => s.trim()).filter(Boolean),
       imagenes: form.imagenes.split('\n').map(s => s.trim()).filter(Boolean),
@@ -238,8 +240,20 @@ function ProductForm({
         </select>
       </div>
       <div>
+        <label className="block text-sm font-medium mb-1">Formato de Talla</label>
+        <select value={form.tipoTalla} onChange={e => setForm({ ...form, tipoTalla: e.target.value })} className="input-field">
+          <option value="letras">Letras (S-M-L-XL) — Adulto</option>
+          <option value="numeros">Números (2-4-6-8-10-12) — Niño</option>
+          <option value="cm">Centímetros (90-100-110) — Bebé</option>
+        </select>
+      </div>
+      <div>
         <label className="block text-sm font-medium mb-1">Tallas (separadas por coma)</label>
-        <input type="text" value={form.tallas} onChange={e => setForm({ ...form, tallas: e.target.value })} className="input-field" placeholder="XS, S, M, L, XL" />
+        <input type="text" value={form.tallas} onChange={e => setForm({ ...form, tallas: e.target.value })} className="input-field" placeholder={
+          form.tipoTalla === 'letras' ? 'XS, S, M, L, XL' :
+          form.tipoTalla === 'numeros' ? '2, 4, 6, 8, 10, 12' :
+          '90, 100, 110, 120, 130'
+        } />
       </div>
       <div>
         <label className="block text-sm font-medium mb-1">Colores (separados por coma)</label>

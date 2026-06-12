@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Producto } from '../lib/types';
-import { formatPrecio, calcularPrecioItem } from '../lib/utils';
+import { formatPrecio, calcularPrecioItem, getTipoTallaLabel } from '../lib/utils';
 import { useCarrito, CarritoProvider } from '../lib/carrito-context';
 import { MAYORISTA_MIN } from '../lib/config';
 
@@ -88,7 +88,7 @@ function ProductDetailInner({ producto }: Props) {
         )}
 
         <div className="mt-6">
-          <label className="block text-sm font-medium text-secondary-700 mb-2">Talla</label>
+          <label className="block text-sm font-medium text-secondary-700 mb-2">{getTipoTallaLabel(producto.tipoTalla)}</label>
           <div className="flex flex-wrap gap-2">
             {producto.tallas.map((talla) => (
               <button

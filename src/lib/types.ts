@@ -1,3 +1,5 @@
+export type TipoTalla = 'letras' | 'numeros' | 'cm';
+
 export interface Producto {
   id: number;
   nombre: string;
@@ -6,6 +8,7 @@ export interface Producto {
   precio_mayorista: number;
   imagenes: string[];
   tallas: string[];
+  tipoTalla: TipoTalla;
   colores: string[];
   categoria: string;
   activo: boolean;

@@ -1,8 +1,17 @@
 import { MAYORISTA_MIN } from './config';
-import type { CarritoItem } from './types';
+import type { CarritoItem, TipoTalla } from './types';
 
 export function formatPrecio(precio: number): string {
   return `$${precio.toLocaleString('es-CL')}`;
+}
+
+export function getTipoTallaLabel(tipo: TipoTalla): string {
+  const labels: Record<TipoTalla, string> = {
+    letras: 'Talla (S-M-L-XL)',
+    numeros: 'Talla (2-4-6-8-10-12)',
+    cm: 'Talla (cm)',
+  };
+  return labels[tipo];
 }
 
 export function calcularPrecioItem(item: CarritoItem): { precioUnitario: number; subtotal: number } {
